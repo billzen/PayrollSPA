@@ -1,0 +1,26 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        Edit Employee: {{EditedPartTimeEmployee.FirstName}} - {{EditedPartTimeEmployee.LastName}} with PartTimeEmployee Id: {{EditedPartTimeEmployee.ID}}
+    </div>
+    <div class="panel-body">
+        <form role="form" novalidate angular-validator name="addEmployeeForm" angular-validator-submit="Register()">
+            <div class="">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="control-label" for="MonthlyWorkingHours">Monthly Working Hours</label>
+                            <input type="text" class="form-control" ng-model="EditedPartTimeEmployee.PartTimeEmployeeRate" name="PartTimeEmployeeRate" id="PartTimeEmployeeRate" placeholder="PartTimeEmployeeRate"
+                                   validate-on="blur" required required-message="'PartTimeEmployeeRate is required'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="updatePartTimeEmployee()">Update</button>
+        </div>
+    </div>
+</div>

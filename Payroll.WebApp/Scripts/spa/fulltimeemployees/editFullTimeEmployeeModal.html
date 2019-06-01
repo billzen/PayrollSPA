@@ -1,0 +1,32 @@
+﻿
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Edit  {{EditedFulltimeEmployee.FirstName}} - {{EditedFulltimeEmployee.LastName}} with FuullTime ID: {{tempEditedFulltimeEmployee.ID}}   <!--scope.EditedFulltimeEmployee-->
+    </div>
+    <div class="panel-body">
+        <form role="form" novalidate angular-validator name="addEmployeeForm" angular-validator-submit="Register()">
+            <div class="">
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-sm-6 selectContainer">
+                            <label class="control-label" for="EmployeeMonthlySalary">Employee Monthly Salary</label> <!--scope.EditedFulltimeEmployee-->
+                            <input type="text" class="form-control" ng-model="tempEditedFulltimeEmployee.EmployeeMonthlySalary" name="EmployeeMonthlySalary" id="EmployeeMonthlySalary" placeholder="EmployeeMonthlySalary"
+                                   validate-on="blur" required required-message="'EmployeeMonthlySalary is required'">
+                        </div>
+
+                        <div class="col-sm-6">&nbsp;
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="updateFulltimeEmployee()">Update</button>
+        </div>
+    </div>
+</div>

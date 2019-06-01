@@ -1,0 +1,90 @@
+﻿<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">CommissionedEmployees Total: <b>{{totalcommissionedemployees}}</b></h4>
+            <div class="input-group">
+                <input id="inputSearchcommissionedemployees" type="search" ng-model="filtercommissionedemployees" class="form-control shortInputSearch" placeholder="Filter, search CommissionedEmployees..">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" ng-click="search();"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-primary" ng-click="clearSearch();"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+
+
+            <!--<div ng-if="loadingcommissionedemployees">
+                <div class="col-xs-4"></div>
+                <div class="col-xs-4">
+                    <i class="fa fa-refresh fa-5x fa-spin"></i> <label class="label label-primary">Loading commissionedemployees...</label>
+                </div>
+                <div class="col-xs-4"></div>
+            </div>-->
+
+            <div class="row">
+                <div class="col-sm-6" ng-repeat="commissionedemployee in CommissionedEmployees | filter:filtercommissionedemployees">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong>{{commissionedemployee.ID}}</strong>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-condensed shortMargin">
+                                 
+                                    <tr>
+                                        <td class="shortPadding">ID:</td>
+                                        <td class="shortPadding"><i>{{commissionedemployee.ID}}</i></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="shortPadding">Employee ID:</td>
+                                        <td class="shortPadding"><i>{{commissionedemployee.EmpId}}</i></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="shortPadding">FirstName:</td>
+                                        <td class="shortPadding"><i>{{commissionedemployee.FirstName}}</i></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="shortPadding">LastName:</td>
+                                        <td class="shortPadding"><i>{{commissionedemployee.LastName}}</i></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="shortPadding">Weekly Paid:</td>
+                                        <td class="shortPadding"><i>{{commissionedemployee.WeeeklyPaid}}</i></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="shortPadding">Monthly WorkingHours:</td>
+                                        <td class="shortPadding"><i>{{commissionedemployee.MonthlyWorkingHours}}</i></td>
+                                    </tr>
+ 
+                                    <tr>
+                                        <td class="shortPadding">Employee MonthlySalary:</td>
+                                        <td class="shortPadding"><i>{{commissionedemployee.EmployeeMonthlySalary}}</i></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer clearfix">
+                            <div class="pull-right">
+                                <buton class="btn btn-primary btn-xs" ng-click="openEditDialog(commissionedemployee);">Edit <i class="fa fa-pencil pull-right"></i></buton>
+                            </div>
+
+                            <div class="pull-left">
+                                <buton class="btn btn-primary btn-xs" ng-click="openOrdersDialog(commissionedemployee);">Add Orders <i class="fa fa-fa-plus pull-left"></i></buton>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="text-center">
+                <custom-pager page="{{page}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="search(page)"></custom-pager>
+            </div>
+        </div>
+    </div>
+</div>

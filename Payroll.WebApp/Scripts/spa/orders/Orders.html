@@ -1,0 +1,68 @@
+﻿<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">orders Total: <b>{{totalorders}}</b></h4>&nbsp;&nbsp;
+            <buton class="btn btn-primary btn-sm" style="padding-top: 7.5px;" ng-click="openAddDialog();"><i class="fa fa-plus pull-right background white">&nbsp;<b>Add Order</b></i></buton>
+            <div class="input-group">
+                <input id="inputSearchorders" type="search" ng-model="filterorders" class="form-control shortInputSearch" placeholder="Filter, search Orders..">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" ng-click="search();"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-primary" ng-click="clearSearch();"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <!--<div ng-if="loadingorders">
+                <div class="col-xs-4"></div>
+                <div class="col-xs-4">
+                    <i class="fa fa-refresh fa-5x fa-spin"></i> <label class="label label-primary">Loading orders...</label>
+                </div>
+                <div class="col-xs-4"></div>
+            </div>-->
+            <div class="row">
+                <div class="col-sm-6" ng-repeat="order in Orders | filter:filterorders">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong>{{order.ID}}</strong>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-condensed shortMargin">
+                                    <tr>
+                                        <td class="shortPadding">ID:</td>
+                                        <td class="shortPadding"><i>{{order.ID}}</i></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="shortPadding">Order date:</td>
+                                        <td class="shortPadding"><i>{{order.OrderDate | date:'dd/MM/yyyy'}}</i></td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="shortPadding">Description:</td>
+                                        <td class="shortPadding"><i>{{order.Orderdescription}}</i></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="shortPadding">Order Amount:</td>
+                                        <td class="shortPadding"><i>{{order.OrderAmount}}</i></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer clearfix">
+                            <div class="pull-right">
+                                <buton class="btn btn-primary btn-xs" ng-click="openEditDialog(order);">Edit <i class="fa fa-pencil pull-right"></i></buton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="text-center">
+                <custom-pager page="{{page}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="search(page)"></custom-pager>
+            </div>
+        </div>
+    </div>
+</div>

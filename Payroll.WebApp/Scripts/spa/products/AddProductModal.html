@@ -1,0 +1,99 @@
+﻿
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Add Product {{NewProduct.ID}} <!--************* Neccassery for using in addProductImages() function-->
+    </div>
+    <div class="panel-body">
+         <form role="form" novalidate angular-validator name="AddProductForm" angular-validator-submit="addProduct()" enctype="multipart/form-data">
+            <div class="">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="control-label" for="Productdescription">Product Description</label>
+                            <input type="text" class="form-control" ng-model="NewProduct.ProductDescription" name="ProductDescription" id="ProductDescription" placeholder="Product description"
+                                   validate-on="blur" required required-message="'Product Description is required'">
+                        </div>
+                        <div class="col-sm-6 selectContainer">
+                            <label class="control-label" for="ProductAmount">Product Price</label>
+                            <input type="text" class="form-control" ng-model="NewProduct.Price" name="Price" id="Price" placeholder="Price"
+                                   validate-on="blur" required required-message="'Product Price is required'">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-sm-6 selectContainer">
+                            <label class="control-label" for="ProductAmount">Product Discount</label>
+                            <input type="text" class="form-control" ng-model="NewProduct.Discount" name="Discount" id="Discount" placeholder="Discount"
+                                   validate-on="blur" required required-message="'Product Discount is required'">
+                        </div>
+
+                        <div class="col-sm-6"></div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">Add Files</div>
+
+                <div class="form-group">
+
+                    <div class="col-xs-12" id="ficont1">
+                        <div class="col-xs-12" id="imgd1"></div>
+                        <input type="file" name="files" id="files1" onchange="displayAsImage(this, 1)" ng-file-select="prepareFiles($files)" />
+                    </div>
+                    <div class="col-xs-12" id="ficont2" style="display:none;">
+                        <div class="col-xs-12" id="imgd2"></div>
+                        <input type="file" name="files" id="files2" onchange="displayAsImage(this, 2)" ng-file-select="prepareFiles($files)" />
+                    </div>
+                    <div class="col-xs-12" id="ficont3" style="display:none;">
+                        <div class="col-xs-12" id="imgd3"></div>
+                        <input type="file" name="files" id="files3" onchange="displayAsImage(this, 3)" ng-file-select="prepareFiles($files)" />
+                    </div>
+                    <div class="col-xs-12" id="ficont4" style="display:none;">
+                        <div class="col-xs-12" id="imgd4"></div>
+                        <input type="file" name="files" id="files4" onchange="displayAsImage(this, 4)" ng-file-select="prepareFiles($files)" />
+                    </div>
+                    <div class="col-xs-12" id="ficont5" style="display:none;">
+                        <div class="col-xs-12" id="imgd5"></div>
+                        <input type="file" name="files" id="files5" onchange="displayAsImage(this, 5)" ng-file-select="prepareFiles($files)" />
+                    </div>
+
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
+            <!--UpdateProduct-->
+            <button type="button" class="btn btn-primary" ng-click="addProduct()">Add Product</button>
+        </div>
+    </div>
+</div>
+<script>
+    // *** Dispaly Images with createObjectURL Only in UI - not save here
+    function displayAsImage(finp, el) {
+        if (finp.files && finp.files[0]) {
+            var file = finp.files[0];
+
+            var imgURL = URL.createObjectURL(file),
+                img = document.createElement('img');
+
+            img.onload = function () {
+                URL.revokeObjectURL(imgURL);
+            };
+
+            img.src = imgURL;
+            $("#imgd" + el).empty();
+            $("#imgd" + el).append(img);
+            if (el < 5) {
+                $("#ficont" + (el + 1)).show();
+            }
+            else {
+                alert("No more 5 images");
+            }
+        }
+    }
+</script>

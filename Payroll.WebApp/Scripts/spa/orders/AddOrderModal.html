@@ -1,0 +1,52 @@
+﻿
+<div class="panel panel-primary">
+    <form role="form" novalidate angular-validator name="NewOrderForm" angular-validator-submit="AddOrder()">
+        <div class="panel-heading">
+            Add Order
+        </div>
+        <div class="panel-body">
+
+            <div class="">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="control-label" for="Orderdescription">Order Description</label>
+                            <input type="text" class="form-control" ng-model="NewOrder.Orderdescription" name="Orderdescription" id="Orderdescription" placeholder="Order description"                                    validate-on="blur" required required-message="'Order Description is required'">
+                        </div>
+                        <div class="col-sm-6 selectContainer">
+                            <label class="control-label" for="OrderAmount">Order Amount</label>
+                            <input type="text" class="form-control" ng-model="NewOrder.OrderAmount" name="OrderAmount" id="OrderAmount" placeholder="OrderAmount"
+                                   validate-on="blur" required required-message="'Order Amount is required'">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-xs-6">
+                            <label class="control-label">Order Date</label>
+                            <p class="input-group">
+                                <input type="text" class="form-control" name="OrderDate" datepicker-popup="{{format}}" ng-model="NewOrder.OrderDate" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true" datepicker-append-to-body="true" close-text="Close"
+                                       validate-on="blur" required required-message="'Order Date is required'" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="col-sm-6"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="panel-footer clearfix">
+            <div class="pull-right">
+                <button type="button" class="btn btn-danger" ng-click="cancelAdd()">Cancel</button>
+                <input type="submit" name="submit" id="submit" value="Add" class="btn btn-primary">
+                <!--<button type="button" class="btn btn-primary" ng-click="AddOrder()">Add</button>-->
+            </div>
+        </div>
+    </form>
+</div>

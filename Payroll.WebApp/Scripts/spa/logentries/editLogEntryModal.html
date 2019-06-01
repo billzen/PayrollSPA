@@ -1,0 +1,121 @@
+﻿<!--<div class="row" ng-if="!loadingLogEntry"> ???????????????????????????-->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Edit {{EditedLogEntry.ID}}
+        </div>
+        <div class="panel-body">
+            <form role="form" novalidate angular-validator name="EditLogEntryForm" id="EditLogEntryForm" angular-validator-submit="UpdateLogEntry()">
+                <div class="">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="control-label" for="ID">ID</label>
+                                <input type="text" class="form-control" ng-model="EditedLogEntry.ID" name="ID" id="ID" disabled>
+                            </div>
+
+                            <div class="col-xs-6 selectContainer">
+                                <label class="control-label" for="EmployeeType">Employees </label>
+                                <select ng-model="EditedLogEntry.TimeCardId" class="form-control black" ng-options="option.TimeCardId as option.LastName for option in Employees" required></select>
+                                <input type="hidden" name="TimeCardId" ng-value="EditedLogEntry.TimeCardId" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--https://jdewit.github.io/bootstrap-timepicker/-->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label class="control-label" for="EntryTime">Entry Time</label>
+                                <div class="input-group bootstrap-timepicker timepicker">
+                                    <input id="EntryTime" type="text" class="form-control input-small" ng-model="EditedLogEntry.EntryTime" ng-change="changeWorkedHour()">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 selectContainer">
+                                <label class="control-label" for="Phone">Depart Time</label>
+                                <div class="input-group bootstrap-timepicker timepicker">
+                                    <input id="DepartTime" type="text" class="form-control input-small" ng-model="EditedLogEntry.DepartTime" ng-change="changeWorkedHour()">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label class="control-label" for="WorkedHours">Worked Hours </label>
+                                <input id="WorkedHours" type="text" class="form-control" ng-model="EditedLogEntry.WorkerdHours" name="WorkedHours" readonly>
+                            </div>
+                            <div class="col-xs-6">
+                                <label class="control-label">Log Date</label>
+                                <p class="input-group">
+                                    <input type="text" class="form-control" name="OrderDate" datepicker-popup="{{format}}" ng-model="EditedLogEntry.Logdate" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true" datepicker-append-to-body="true" close-text="Close"
+                                           validate-on="blur" required required-message="'Log Date is required'" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="openDatePicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+            <div>
+                <!--***************  Add input type file upload out of form tag in order to work with angular -->
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="text-center"  ng-if="EditedLogEntry.LogEntryImage">
+                            <img ng-src="../../Content/images/LogEntries/{{EditedLogEntry.LogEntryImage}}" class="avatar img-responsive">
+                            <h6>Change photo...</h6>                            
+                        </div>
+                        </div>
+                        <div class="col-xs-6">&nbsp;
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <input type="file" ng-file-select="prepareFiles($files)">
+                    </div>
+                    <div class="col-xs-6">&nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer clearfix">
+            <div class="pull-right">
+                <button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
+                <button type="button" class="btn btn-primary" ng-click="UpdateLogEntry()">Update</button>
+            </div>
+        </div>
+    </div>
+<!--</div>-->
+    <script type="text/javascript">
+        //$('#EntryTime').timepicker({
+        //    minuteStep: 1,
+        //    showSeconds: true,
+        //    showMeridian: false,
+        //    defaultTime: '{{EditedLogEntry.EntryTime}}'
+        //});
+
+        //var time = $('#timepicker1').timepicker('showWidget');
+
+        //$('#timepicker1').timepicker().on('show.timepicker', function (e) {
+        //    console.log('The time is ' + e.time.value);
+        //    console.log('The hour is ' + e.time.hours);
+        //    console.log('The minute is ' + e.time.minutes);
+        //    console.log('The meridian is ' + e.time.meridian);
+        //});
+
+
+        //setTimeout(function () {
+        //    $('#timeDisplay').text($('#timepicker1').val());
+        //}, 100);
+
+        //$('#timepicker1').on('changeTime.timepicker', function (e) {
+        //    $('#timeDisplay').text(e.time.value);
+        //});
+
+    </script>

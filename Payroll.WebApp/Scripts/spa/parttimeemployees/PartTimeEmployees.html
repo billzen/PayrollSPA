@@ -1,0 +1,52 @@
+﻿<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">PartTime Employees Total: <b>{{totalPartTimeEmployees}}</b></h4>
+            <div class="input-group">
+                <input id="inputSearchEmployees" type="search" ng-model="filterPartTimeEmployees" class="form-control shortInputSearch" placeholder="Filter, search employees..">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" ng-click="search();"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-primary" ng-click="clearSearch();"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <!--<div ng-if="loadingEmployees">
+                <div class="col-xs-4"></div>
+                <div class="col-xs-4">
+                    <i class="fa fa-refresh fa-5x fa-spin"></i> <label class="label label-primary">Loading Employees...</label>
+                </div>
+                <div class="col-xs-4"></div>
+            </div>-->
+            <div class="row">
+                <div class="col-sm-6" ng-repeat="parttimeemployee in PartTimeEmployees | filter:filterPartTimeEmployees">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{parttimeemployee.ID}}</strong><br />
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-condensed shortMargin">                                    
+                                    <tr>
+                                        <td class="shortPadding">Employee Rate:</td>
+                                        <td class="shortPadding"><i>{{parttimeemployee.PartTimeEmployeeRate}}</i></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer clearfix">  
+                            <div class="pull-right">
+                                <buton class="btn btn-primary btn-xs" ng-click="openEditDialog(parttimeemployee);">Edit <i class="fa fa-pencil pull-right"></i></buton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="text-center">
+                <custom-pager page="{{page}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="search(page)"></custom-pager>
+            </div>
+        </div>
+    </div>
+</div>

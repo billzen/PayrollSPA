@@ -1,0 +1,105 @@
+﻿<hr />
+<div class="alert alert-info alert-dismissable">
+    <a class="panel-close close" data-dismiss="alert">×</a>
+    <i class="fa fa-user-plus fa-3x"></i>
+    Register new employee. Make sure you fill all required fields.
+</div>
+<div class="row">
+    <form role="form" novalidate angular-validator name="addEmployeeForm" angular-validator-submit="Register()">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="newEmployee.FirstName" name="firstName" id="firstName" placeholder="First Name"
+                           validate-on="blur" required required-message="'First Name is required'">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="newEmployee.LastName" name="lastName" id="lastName" placeholder="Last Name"
+                           validate-on="blur" required required-message="'Last Name is required'">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="newEmployee.Address" id="address" name="address" placeholder="Address"
+                           validate-on="blur" required required-message="'Address is required'">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <div class="form-group">
+                    <input type="text" ng-model="newEmployee.City" class="form-control" id="city" name="city" placeholder="City"
+                           validate-on="blur" required required-message="'City is required'">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="postcode">Post Code</label>
+                <div class="form-group">
+                    <input type="text" ng-model="newEmployee.PostCode" class="form-control" id="postcode" name="postcode" placeholder="Post Code"
+                           validate-on="blur" required required-message="'Post Code is required'">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <div class="form-group">
+                    <input type="text" ng-model="newEmployee.Phone" class="form-control" id="phone" name="phone" placeholder="Phone"
+                           validate-on="blur" required required-message="'Phone is required'">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <div class="form-group">
+                    <input type="email" class="form-control" ng-model="newEmployee.Email" id="email" name="email" placeholder="Email address"
+                           validate-on="blur" required required-message="'Email is required'">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="departmentno">Department No</label>
+                <div class="form-group">
+                    <input type="text" ng-model="newEmployee.DepartmentNo" class="form-control" id="departmentno" name="departmentno" placeholder="Department No"
+                           validate-on="blur" required required-message="'department No is required'">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="type">Employee Type</label>
+                <div class="form-group">
+                    <select ng-model="newEmployee.TypeId" class="form-control black" ng-options="option.ID as option.TypeDescription for option in EmployeeTypes" required></select>
+                    <input type="hidden" name="TypeId" ng-value="newEmployee.TypeId" />
+                </div>
+            </div>
+
+            <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+        </div>
+    </form>
+    <div><br /></div>
+    <div class="col-sm-5 col-md-push-1">
+        <div class="col-md-12">
+            <div class="alert alert-success">
+                <ul>
+                    <li ng-repeat="message in submission.successMessages track by $index">
+                        <strong>{{message}}</strong>
+                    </li>
+                </ul>
+                <strong ng-bind="submission.successMessage"><span class="glyphicon glyphicon-ok"></span> </strong>
+            </div>
+            <div class="alert alert-danger">
+                <ul>
+                    <li ng-repeat="error in submission.errorMessages track by $index">
+                        <strong>{{error}}</strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
