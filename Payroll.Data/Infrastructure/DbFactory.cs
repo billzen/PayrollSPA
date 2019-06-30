@@ -10,7 +10,7 @@ namespace Payroll.Data.Infrastructure
     {
         PayrollContext dbContext;
 
-
+        // ^^^^^ Comment
         public PayrollContext Init()
         {
              return dbContext ?? (dbContext = new PayrollContext());
